@@ -4,4 +4,17 @@
 
 <h1>Hello, world!</h1>
 
+<button @onclick=buttonsClick>Click Me</button>
+<p>Your last click on @timesClicked, was  @lastClicked</p>
+
+@code
+{
+    int timesClicked = 0;
+    DateTime lastClicked;
+    void buttonClick()
+    {
+        timesClicked++;
+        lastClicked = DateTime.Now;
+    }
+}
 Welcome to your new app.
