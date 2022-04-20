@@ -1,9 +1,10 @@
 ﻿@page "/"
-
+@inject HttpClient httpClient
 <PageTitle>Index</PageTitle>
 
 <h1>Hello, New branch!</h1>
 
+<input @bind=increment type='number'/>
 <button @onclick=buttonsClick>Click Me</button>
 <p>Your last click on @timesClicked, was  @lastClicked</p>
 
@@ -19,16 +20,17 @@
     string userName;
     string apiResponse = "Enter your name and click the Greet Me! Button";
     int timesClicked = 0;
+
+    int increment = 1;
     DateTime lastClicked;
     void buttonsClick()
     {
-        timesClicked++;
+        timesClicked+=increment;
         lastClicked = DateTime.Now;
     }
 
     async Task callApi()
     {
-        var httpClient = new HttpClient();
         apiResponse = await httpClient.GetStringAsync($"/api/HttpTrigger1?name={userName}");
     }
 }
