@@ -2,7 +2,7 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Hello, New branch!</h1>
 
 <button @onclick=buttonsClick>Click Me</button>
 <p>Your last click on @timesClicked, was  @lastClicked</p>
@@ -11,7 +11,7 @@
 {
     int timesClicked = 0;
     DateTime lastClicked;
-    void buttonClick()
+    void buttonsClick()
     {
         timesClicked++;
         lastClicked = DateTime.Now;
