@@ -7,14 +7,29 @@
 <button @onclick=buttonsClick>Click Me</button>
 <p>Your last click on @timesClicked, was  @lastClicked</p>
 
+<label>
+    Your Name
+    <input type="text" @bind=userName>
+</label>
+<button @onclick=callApi>Greet Me!</button>
+<p>@apiResponse</p>
+
 @code
 {
+    string userName;
+    string apiResponse = "Enter your name and click the Greet Me! Button";
     int timesClicked = 0;
     DateTime lastClicked;
     void buttonsClick()
     {
         timesClicked++;
         lastClicked = DateTime.Now;
+    }
+
+    async Task callApi()
+    {
+        var httpClient = new HttpClient();
+        apiResponse = await httpClient.GetStringAsync($"/api/HttpTrigger1?name={userName}");
     }
 }
 Welcome to your new app.
